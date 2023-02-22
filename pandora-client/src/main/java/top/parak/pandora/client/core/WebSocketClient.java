@@ -20,7 +20,7 @@ package top.parak.pandora.client.core;
  * }
  * </pre>
  *
- * @author KHighness
+ * @author Khighness
  * @since 2023-02-22
  */
 public interface WebSocketClient {

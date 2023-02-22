@@ -9,7 +9,7 @@ import java.net.URI;
 /**
  * The factory of {@link WebSocketClient}.
  *
- * @author KHighness
+ * @author Khighness
  * @since 2023-02-22
  */
 public class WebSocketClientFactory {
