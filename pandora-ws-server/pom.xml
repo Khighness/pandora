@@ -9,7 +9,18 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>pandora-server</artifactId>
+    <artifactId>pandora-ws-server</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>top.parak.pandora</groupId>
+            <artifactId>pandora-toolkit</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

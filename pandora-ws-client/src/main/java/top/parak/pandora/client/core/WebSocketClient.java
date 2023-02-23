@@ -1,7 +1,7 @@
 package top.parak.pandora.client.core;
 
 /**
- * A client for websocket protocol.
+ * The client for websocket protocol.
  *
  * <p>The recommended practice is such as:</p>
  *

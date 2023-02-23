@@ -3,6 +3,7 @@
 
 # Log file
 *.log
+/logs/
 
 # BlueJ files
 *.ctxt
@@ -26,10 +27,6 @@ hs_err_pid*
 .idea/
 *.iml
 
-
 # Target
 /target/
 
-# Logs
-*.log
-/logs/

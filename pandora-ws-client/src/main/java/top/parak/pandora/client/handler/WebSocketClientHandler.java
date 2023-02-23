@@ -16,6 +16,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * Logic handler for {@link top.parak.pandora.client.core.NettyWebSocketClient}.
+ *
  * @author Khighness
  * @since 2023-02-22
  */

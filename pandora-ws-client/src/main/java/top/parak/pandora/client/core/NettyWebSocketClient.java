@@ -20,6 +20,7 @@ import io.netty.handler.codec.http.websocketx.WebSocketClientHandshakerFactory;
 import io.netty.handler.codec.http.websocketx.WebSocketVersion;
 import top.parak.pandora.client.exception.WebSocketClientException;
 import top.parak.pandora.client.handler.WebSocketClientHandler;
+import top.parak.pandora.common.HttpConstants;
 
 import java.net.URI;
 import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
@@ -82,8 +83,11 @@ public class NettyWebSocketClient implements WebSocketClient {
                     @Override
                     protected void initChannel(SocketChannel sc) throws Exception {
                         ChannelPipeline pipeline = sc.pipeline();
+                        // 将请求与应答消息进行http编解码
                         pipeline.addLast("http-codec", new HttpClientCodec());
-                        pipeline.addLast("aggregator", new HttpObjectAggregator(8192));
+                        // 将http消息的多个部分组合成一条完成的http消息
+                        pipeline.addLast("aggregator", new HttpObjectAggregator(HttpConstants.MAX_CONTENT_LENGTH));
+                        // 自定义
                         pipeline.addLast("client-handler", webSocketClientHandler);
                     }
                 });
