@@ -6,11 +6,12 @@ import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sun.rmi.runtime.Log;
 
 import java.net.SocketAddress;
 
 /**
+ * Netty handler for {@link top.parak.pandora.server.core.NettyWebSocketServer}.
+ *
  * @author cantai
  * @since 2023-02-23
  */
