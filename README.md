@@ -5,10 +5,9 @@ A high-performance websocket gateway which supports horizontal expansion and loa
 
 ## Core Feature
 
-- websocket gateway
-- message publish
-- instant messaging
-
+- Websocket Gateway
+- Message Publish
+- Instant Messag
 
 
 ## Architecture
