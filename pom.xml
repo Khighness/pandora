@@ -14,7 +14,8 @@
         <module>pandora-ws-client</module>
         <module>pandora-toolkit</module>
         <module>pandora-proxy</module>
-        <module>pandora-pub-center</module>
+        <module>pandora-session-service</module>
+        <module>pandora-message-service</module>
     </modules>
 
     <developers>
