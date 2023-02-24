@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>pandora-proxy</artifactId>
+    <artifactId>pandora-gateway-proxy</artifactId>
 
 
 </project>
