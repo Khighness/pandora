@@ -17,7 +17,7 @@ public class NettyWebSocketServerTest {
     @Test
     public void startAndStop() throws InterruptedException {
         server.start();
-        Thread.sleep(100);
+        Thread.sleep(1000);
         server.stop();
     }
 

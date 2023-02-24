@@ -27,8 +27,6 @@ public class NettyWebSocketServer extends ReOpenableStatemachine implements WebS
 
     private static final Logger LOG = LoggerFactory.getLogger(WebSocketServerHandler.class);
 
-    private final ReentrantLock lock;
-
     /**
      * The uri of websocket server.
      */
@@ -52,14 +50,12 @@ public class NettyWebSocketServer extends ReOpenableStatemachine implements WebS
      * @param contextPath the context path of server
      */
     public NettyWebSocketServer(String host, int port, String contextPath) {
-        this.lock = new ReentrantLock();
         this.uri = URI.create(String.format("ws://%s:%d/%s", host, port, contextPath));
         this.sessionManageService = new MemorySessionManageService();
     }
 
     @Override
     public void start() {
-        lock.lock();
         try {
             ServerBootstrap serverBootstrap = new ServerBootstrap();
 
@@ -76,28 +72,11 @@ public class NettyWebSocketServer extends ReOpenableStatemachine implements WebS
             LOG.info("Netty websocket server started on {}", uri);
 
             channel.closeFuture().sync();
-            transferToOpened();
         } catch (InterruptedException e) {
             LOG.error("[start] interrupted", e);
         } finally {
-            lock.unlock();
-        }
-    }
-
-    @Override
-    public void stop() {
-        if (!isOpened()) {
-            throw new WebSocketServerException("Websocket server is not opened or already closed");
-        }
-
-        lock.unlock();
-        try {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
-            LOG.info("Netty websocket server is stoped");
-            transferToClosed();
-        } finally {
-            lock.unlock();
         }
     }
 

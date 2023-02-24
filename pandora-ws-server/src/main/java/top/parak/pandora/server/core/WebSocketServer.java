@@ -16,11 +16,6 @@ public interface WebSocketServer {
     void start();
 
     /**
-     * Stop the websocket server.
-     */
-    void stop();
-
-    /**
      * Send message to the client.
      *
      * @param session the client session
