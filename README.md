@@ -7,7 +7,7 @@ A high-performance websocket gateway which supports horizontal expansion and loa
 
 - Websocket Gateway
 - Message Publish
-- Instant Messag
+- Instant Message
 
 
 ## Architecture
