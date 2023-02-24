@@ -13,7 +13,7 @@
         <module>pandora-ws-server</module>
         <module>pandora-ws-client</module>
         <module>pandora-toolkit</module>
-        <module>pandora-proxy</module>
+        <module>pandora-gateway-proxy</module>
         <module>pandora-session-service</module>
         <module>pandora-message-service</module>
     </modules>
