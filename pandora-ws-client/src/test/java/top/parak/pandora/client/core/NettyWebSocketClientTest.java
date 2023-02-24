@@ -3,7 +3,6 @@ package top.parak.pandora.client.core;
 import org.junit.Before;
 import org.junit.Test;
 import top.parak.pandora.client.exception.WebSocketClientException;
-import top.parak.pandora.client.factory.WebSocketClientFactory;
 
 public class NettyWebSocketClientTest {
 

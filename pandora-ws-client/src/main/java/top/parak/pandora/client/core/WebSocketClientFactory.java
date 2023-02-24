@@ -1,7 +1,5 @@
-package top.parak.pandora.client.factory;
+package top.parak.pandora.client.core;
 
-import top.parak.pandora.client.core.NettyWebSocketClient;
-import top.parak.pandora.client.core.WebSocketClient;
 import top.parak.pandora.client.exception.WebSocketClientException;
 
 import java.net.URI;

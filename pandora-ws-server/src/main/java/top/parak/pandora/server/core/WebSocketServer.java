@@ -1,5 +1,7 @@
 package top.parak.pandora.server.core;
 
+import top.parak.pandora.server.model.Session;
+
 /**
  * The server for websocket protocol.
  *
@@ -8,8 +10,22 @@ package top.parak.pandora.server.core;
  */
 public interface WebSocketServer {
 
+    /**
+     * Start the websocket server.
+     */
     void start();
 
+    /**
+     * Stop the websocket server.
+     */
     void stop();
+
+    /**
+     * Send message to the client.
+     *
+     * @param session the client session
+     * @param message the text message
+     */
+    void send(Session session, String message);
 
 }
