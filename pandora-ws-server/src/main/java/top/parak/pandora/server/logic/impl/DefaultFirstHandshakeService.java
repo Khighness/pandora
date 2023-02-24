@@ -6,7 +6,7 @@ import top.parak.pandora.server.model.Session;
 import java.net.SocketAddress;
 
 /**
- * @author cantai
+ * @author Khighness
  * @since 2023-02-24
  */
 public class DefaultFirstHandshakeService implements FirstHandshakeService {

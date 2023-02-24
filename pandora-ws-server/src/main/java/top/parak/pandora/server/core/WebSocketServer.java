@@ -5,7 +5,7 @@ import top.parak.pandora.server.model.Session;
 /**
  * The server for websocket protocol.
  *
- * @author cantai
+ * @author Khighness
  * @since 2023-02-23
  */
 public interface WebSocketServer {

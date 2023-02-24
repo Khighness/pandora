@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * Factory for {@link FrameStrategy}.
  *
- * @author cantai
+ * @author Khighness
  * @since 2023-02-24
  */
 public class FrameStrategyFactory {

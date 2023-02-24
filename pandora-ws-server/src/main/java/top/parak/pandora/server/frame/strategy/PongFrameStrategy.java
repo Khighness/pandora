@@ -6,7 +6,7 @@ import top.parak.pandora.server.frame.FrameStrategy;
 /**
  * Strategy to handle {@link PongWebSocketFrame}.
  *
- * @author cantai
+ * @author Khighness
  * @since 2023-02-24
  */
 public interface PongFrameStrategy extends FrameStrategy {

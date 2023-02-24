@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 /**
  * Abstract statemachine.
  *
- * @author cantai
+ * @author Khighness
  * @since 2023-02-24
  */
 public abstract class AbstractStateMachine implements StateMachine {

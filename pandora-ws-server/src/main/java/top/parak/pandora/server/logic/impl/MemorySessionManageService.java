@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @author cantai
+ * @author Khighness
  * @since 2023-02-24
  */
 public class MemorySessionManageService implements SessionManageService {

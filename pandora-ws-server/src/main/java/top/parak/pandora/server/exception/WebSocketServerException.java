@@ -5,7 +5,7 @@ import top.parak.pandora.server.core.WebSocketServer;
 /**
  * Thrown when {@link WebSocketServer} occurs exception.
  *
- * @author cantai
+ * @author Khighness
  * @since 2023-02-24
  */
 public class WebSocketServerException extends RuntimeException {

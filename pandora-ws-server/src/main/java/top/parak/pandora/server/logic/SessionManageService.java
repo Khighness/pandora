@@ -8,7 +8,7 @@ import java.net.SocketAddress;
 /**
  * Session manege service.
  *
- * @author cantai
+ * @author Khighness
  * @since 2023-02-24
  */
 public interface SessionManageService {

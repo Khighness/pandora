@@ -6,7 +6,7 @@ import io.netty.handler.codec.http.websocketx.WebSocketFrame;
 /**
  * Strategy to handle websocket frame.
  *
- * @author cantai
+ * @author Khighness
  * @since 2023-02-24
  */
 public interface FrameStrategy {

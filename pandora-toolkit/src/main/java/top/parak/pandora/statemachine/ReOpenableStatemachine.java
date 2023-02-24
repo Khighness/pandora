@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Re-openable statemachine.
  *
- * @author cantai
+ * @author Khighness
  * @since 2023-02-24
  */
 public class ReOpenableStatemachine extends AbstractStateMachine {

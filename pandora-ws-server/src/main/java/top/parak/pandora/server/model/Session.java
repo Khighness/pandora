@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Websocket session DTO.
  *
- * @author cantai
+ * @author Khighness
  * @since 2023-02-24
  */
 public class Session implements Serializable {

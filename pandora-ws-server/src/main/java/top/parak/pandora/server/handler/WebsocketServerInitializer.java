@@ -15,16 +15,16 @@ import java.util.concurrent.TimeUnit;
 /**
  * Server handler initializer.
  *
- * @author cantai
+ * @author Khighness
  * @since 2023-02-24
  */
-public class WebsocketChildHandler extends ChannelInitializer<SocketChannel> {
+public class WebsocketServerInitializer extends ChannelInitializer<SocketChannel> {
 
     private final String uri;
 
     private final SessionManageService sessionManageService;
 
-    public WebsocketChildHandler(String uri, SessionManageService sessionManageService) {
+    public WebsocketServerInitializer(String uri, SessionManageService sessionManageService) {
         this.uri = uri;
         this.sessionManageService = sessionManageService;
     }
@@ -36,7 +36,7 @@ public class WebsocketChildHandler extends ChannelInitializer<SocketChannel> {
         pipeline.addLast("aggregator", new HttpObjectAggregator(HttpConstants.MAX_CONTENT_LENGTH));
         pipeline.addLast("idea-handler", new IdleStateHandler(10, 10, 120, TimeUnit.MINUTES));
         pipeline.addLast("http-chunked", new ChunkedWriteHandler());
-        pipeline.addLast("heartbeater", new HeartbeatHandler());
+        pipeline.addLast("heart-beater", new HeartbeatHandler());
         pipeline.addLast("logic-handler", new WebSocketServerHandler(uri, sessionManageService));
     }
 

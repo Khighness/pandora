@@ -2,6 +2,7 @@ package top.parak.pandora.client.core;
 
 import org.junit.Before;
 import org.junit.Test;
+
 import top.parak.pandora.client.exception.WebSocketClientException;
 
 public class NettyWebSocketClientTest {
@@ -10,7 +11,7 @@ public class NettyWebSocketClientTest {
 
     @Before
     public void before() {
-        nettyWebSocketClient = WebSocketClientFactory.create("ws://127.0.0.1:3333/websocket/TestNettyWebSocketClient");
+        nettyWebSocketClient = WebSocketClientFactory.create("ws://127.0.0.1:3333/ws/TestNettyWebSocketClient");
     }
 
     @Test
@@ -52,7 +53,7 @@ public class NettyWebSocketClientTest {
     }
 
     @Test(expected = WebSocketClientException.class)
-    public void sendBeforOpen() throws Exception {
+    public void sendBeforeOpen() throws Exception {
         nettyWebSocketClient.send("Hello");
     }
 

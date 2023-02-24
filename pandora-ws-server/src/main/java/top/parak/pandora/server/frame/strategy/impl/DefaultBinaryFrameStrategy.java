@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import top.parak.pandora.server.frame.strategy.BinaryFrameStrategy;
 
 /**
- * @author cantai
+ * @author Khighness
  * @since 2023-02-24
  */
 public class DefaultBinaryFrameStrategy implements BinaryFrameStrategy {

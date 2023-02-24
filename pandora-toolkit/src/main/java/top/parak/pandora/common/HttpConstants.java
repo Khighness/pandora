@@ -1,7 +1,7 @@
 package top.parak.pandora.common;
 
 /**
- * @author cantai
+ * @author Khighness
  * @since 2023-02-23
  */
 public class HttpConstants {

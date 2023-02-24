@@ -7,7 +7,7 @@ import java.net.SocketAddress;
 /**
  * First handshake service.
  *
- * @author cantai
+ * @author Khighness
  * @since 2023-02-24
  */
 public interface FirstHandshakeService {

@@ -12,7 +12,7 @@ import java.net.SocketAddress;
 /**
  * Netty handler for {@link top.parak.pandora.server.core.NettyWebSocketServer}.
  *
- * @author cantai
+ * @author Khighness
  * @since 2023-02-23
  */
 public class HeartbeatHandler extends ChannelInboundHandlerAdapter {

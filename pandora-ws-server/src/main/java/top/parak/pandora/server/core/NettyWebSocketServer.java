@@ -7,20 +7,21 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import top.parak.pandora.server.exception.WebSocketServerException;
 import top.parak.pandora.server.handler.WebSocketServerHandler;
+import top.parak.pandora.server.handler.WebsocketServerInitializer;
 import top.parak.pandora.server.logic.SessionManageService;
 import top.parak.pandora.server.logic.impl.MemorySessionManageService;
 import top.parak.pandora.server.model.Session;
 import top.parak.pandora.statemachine.ReOpenableStatemachine;
 
 import java.net.URI;
-import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * {@link WebSocketServer} implementation on Netty.
  *
- * @author cantai
+ * @author Khighness
  * @since 2023-02-23
  */
 public class NettyWebSocketServer extends ReOpenableStatemachine implements WebSocketServer {
@@ -61,15 +62,16 @@ public class NettyWebSocketServer extends ReOpenableStatemachine implements WebS
 
             bossGroup = new NioEventLoopGroup(1);
             workerGroup = new NioEventLoopGroup();
-            WebSocketServerHandler serverHandler = new WebSocketServerHandler(uri.toString(), sessionManageService);
+            WebsocketServerInitializer serverInitializer =
+                    new WebsocketServerInitializer(uri.toString(), sessionManageService);
 
             serverBootstrap
                     .group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
-                    .childHandler(serverHandler);
+                    .childHandler(serverInitializer);
 
             Channel channel = serverBootstrap.bind(uri.getHost(), uri.getPort()).channel();
-            LOG.info("Netty websocket server started on {}", uri);
+            LOG.info("Netty websocket server started on [{}]", uri);
 
             channel.closeFuture().sync();
         } catch (InterruptedException e) {

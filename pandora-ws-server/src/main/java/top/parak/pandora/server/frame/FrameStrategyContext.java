@@ -6,7 +6,7 @@ import io.netty.handler.codec.http.websocketx.WebSocketFrame;
 /**
  * Frame context to handle {@link WebSocketFrame}
  *
- * @author cantai
+ * @author Khighness
  * @since 2023-02-24
  */
 public class FrameStrategyContext {

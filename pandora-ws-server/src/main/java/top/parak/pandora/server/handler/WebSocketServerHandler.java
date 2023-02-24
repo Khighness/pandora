@@ -20,7 +20,7 @@ import top.parak.pandora.server.model.Session;
 /**
  * Logic handler for {@link top.parak.pandora.server.core.NettyWebSocketServer}.
  *
- * @author cantai
+ * @author Khighness
  * @since 2023-02-23
  */
 public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> {
@@ -63,7 +63,7 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        LOG.info("|==================== [连接异常: {}] ====================|", cause.getMessage());
+        LOG.info("|==================== [连接异常: {}], {}|", ctx.channel().remoteAddress(), cause.getMessage());
         closeConnection(ctx);
     }
 
@@ -78,7 +78,6 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
      * <p>
      * Websocket client sends the handshake request based on http.
      * </p>
-     *
      *
      * @param ctx channel handler context
      * @param req handshake request from client
@@ -122,11 +121,11 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
      * @param ctx channel handler context
      */
     private void closeConnection(ChannelHandlerContext ctx) {
-        LOG.info("|==================== [断开连接: {}] ====================|", ctx.channel().remoteAddress());
         ctx.close();
         Session session = sessionManageService.removeSession(ctx.channel().remoteAddress());
         if (session != null) {
             LOG.info("[closeConnection] succeed ro remove session: {}", session);
+            LOG.info("|==================== [断开连接: {}] ====================|", ctx.channel().remoteAddress());
         }
     }
 

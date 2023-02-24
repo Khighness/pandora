@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Thread-safe stateMachine.
  *
- * @author cantai
+ * @author Khighness
  * @since 2023-02-24
  */
 public interface StateMachine {
