@@ -34,6 +34,7 @@ public class NettyWebSocketClientTest {
             nettyWebSocketClient.open();
             for (int i = 1; i <= 10; i++) {
                 nettyWebSocketClient.send("Hello * " + i);
+                Thread.sleep(5000);
             }
         } finally {
             nettyWebSocketClient.close();

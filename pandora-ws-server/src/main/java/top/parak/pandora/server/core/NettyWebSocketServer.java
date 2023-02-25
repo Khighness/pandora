@@ -17,6 +17,8 @@ import top.parak.pandora.server.model.Session;
 import top.parak.pandora.statemachine.ReOpenableStatemachine;
 
 import java.net.URI;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * {@link WebSocketServer} implementation on Netty.
@@ -56,7 +58,7 @@ public class NettyWebSocketServer extends ReOpenableStatemachine implements WebS
     }
 
     @Override
-    public void start() {
+    public void start() throws WebSocketServerException {
         try {
             ServerBootstrap serverBootstrap = new ServerBootstrap();
 
@@ -71,11 +73,12 @@ public class NettyWebSocketServer extends ReOpenableStatemachine implements WebS
                     .childHandler(serverInitializer);
 
             Channel channel = serverBootstrap.bind(uri.getHost(), uri.getPort()).channel();
+            transferToOpened();
             LOG.info("Netty websocket server started on [{}]", uri);
 
             channel.closeFuture().sync();
         } catch (InterruptedException e) {
-            LOG.error("[start] interrupted", e);
+            throw new WebSocketServerException("Websocket server is interrupted");
         } finally {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
@@ -83,7 +86,8 @@ public class NettyWebSocketServer extends ReOpenableStatemachine implements WebS
     }
 
     @Override
-    public void send(Session session, String message) {
+    public void send(Session session, String message) throws WebSocketServerException {
+        LOG.info("[send] {}: {}", session, message);
         if (!isOpened()) {
             throw new WebSocketServerException("Websocket server is not opened or already closed");
         }
