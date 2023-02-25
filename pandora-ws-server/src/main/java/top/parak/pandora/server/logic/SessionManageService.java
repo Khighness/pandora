@@ -59,7 +59,7 @@ public interface SessionManageService {
      *
      * @param id      the id of client
      * @param message the message to be sent
-     * @return true if succes, otherwise false
+     * @return true if success, otherwise false
      */
     boolean publishMessage(String id, String message);
 
