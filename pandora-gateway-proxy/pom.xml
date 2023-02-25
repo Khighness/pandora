@@ -11,5 +11,7 @@
 
     <artifactId>pandora-gateway-proxy</artifactId>
 
+    <dependencies>
+    </dependencies>
 
 </project>
