@@ -17,6 +17,7 @@ import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.handler.codec.http.websocketx.WebSocketClientHandshaker;
 import io.netty.handler.codec.http.websocketx.WebSocketClientHandshakerFactory;
 import io.netty.handler.codec.http.websocketx.WebSocketVersion;
+
 import top.parak.pandora.client.exception.WebSocketClientException;
 import top.parak.pandora.client.handler.WebSocketClientHandler;
 import top.parak.pandora.common.HttpConstants;
