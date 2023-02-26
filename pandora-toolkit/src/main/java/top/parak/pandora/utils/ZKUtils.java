@@ -34,7 +34,7 @@ public class ZKUtils {
     /**
      * Cache the registered path.
      */
-    private static final Set<String> REGISTER_PATH_SET = new HashSet<>();
+    private static final Set<String> REGISTERED_PATH_SET = new HashSet<>();
     /**
      * Cache the node path and the children of node.
      */
@@ -87,11 +87,12 @@ public class ZKUtils {
     public static void createPersistentNode(CuratorFramework zkClient, String path) {
         path = ZK_REGISTER_ROOT_PATH + "/" + path;
         try {
-            if (REGISTER_PATH_SET.contains(path) || zkClient.checkExists().forPath(path) != null) {
+            if (REGISTERED_PATH_SET.contains(path) || zkClient.checkExists().forPath(path) != null) {
                 LOG.info("[createPersistentNode] The node already exists: {}", path);
             } else {
                 zkClient.create().creatingParentContainersIfNeeded().withMode(CreateMode.PERSISTENT).forPath(path);
-                LOG.error("[createPersistentNode] Succeed to create node: {}", path);
+                LOG.info("[createPersistentNode] Succeed to create node: {}", path);
+                REGISTERED_PATH_SET.add(path);
             }
         } catch (Exception e) {
             LOG.error("[createPersistentNode] Failed to create node: {}, error: {}", path, e.getMessage(), e);
@@ -131,7 +132,7 @@ public class ZKUtils {
      * @param suffixPath the suffix of the path
      */
     public static void clearNodesWithSuffix(CuratorFramework zkClient, String suffixPath) {
-        REGISTER_PATH_SET.stream().parallel().forEach(path -> {
+        REGISTERED_PATH_SET.stream().parallel().forEach(path -> {
             try {
                 if (path.endsWith(suffixPath)) {
                     zkClient.delete().forPath(path);
