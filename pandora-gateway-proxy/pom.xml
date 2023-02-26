@@ -12,6 +12,11 @@
     <artifactId>pandora-gateway-proxy</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>top.parak.pandora</groupId>
+            <artifactId>pandora-toolkit</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
 </project>

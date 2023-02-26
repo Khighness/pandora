@@ -15,7 +15,7 @@ public interface StateMachine {
     /**
      * Get the state of statemachine.
      *
-     * @return the state of statemachine.
+     * @return the state of statemachine
      */
     int state();
 
