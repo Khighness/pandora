@@ -80,7 +80,7 @@ public class ZKUtilsTest {
             Assert.assertEquals(i, childrenNodes.size());
         }
         for (int i = 1; i <= total; i++) {
-            ZKUtils.clearNodesWithSufffx(zkClient,   "K*" + i);
+            ZKUtils.clearNodesWithSuffix(zkClient,   "K*" + i);
             List<String> childrenNodes = ZKUtils.getChildrenNodes(zkClient, parentPath);
             Assert.assertEquals(total - i, childrenNodes.size());
         }

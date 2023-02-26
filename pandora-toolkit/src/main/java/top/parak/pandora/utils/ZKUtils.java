@@ -130,7 +130,7 @@ public class ZKUtils {
      * @param zkClient   Zookeeper client
      * @param suffixPath the suffix of the path
      */
-    public static void clearNodesWithSufffx(CuratorFramework zkClient, String suffixPath) {
+    public static void clearNodesWithSuffix(CuratorFramework zkClient, String suffixPath) {
         REGISTER_PATH_SET.stream().parallel().forEach(path -> {
             try {
                 if (path.endsWith(suffixPath)) {
