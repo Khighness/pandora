@@ -5,6 +5,8 @@ import top.parak.pandora.proxy.discovery.ServiceDiscovery;
 import java.net.InetSocketAddress;
 
 /**
+ * {@link ServiceDiscovery} implementation based on Zookeeper.
+ *
  * @author Khighness
  * @since 2023-02-25
  */
