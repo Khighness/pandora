@@ -14,7 +14,7 @@ public interface ServiceDiscovery {
      * Archive the address of service instance by service name.
      *
      * @param serviceName the name of service
-     * @return the address of service instance
+     * @return the unique address of service instance
      */
     InetSocketAddress archiveInstance(String serviceName);
 
