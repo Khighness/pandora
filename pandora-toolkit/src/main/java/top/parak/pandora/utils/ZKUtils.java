@@ -138,10 +138,10 @@ public class ZKUtils {
                     zkClient.delete().forPath(path);
                 }
             } catch (Exception e) {
-                LOG.error("[clearNodesWithSuffifx] Failed to delete node: {}", path);
+                LOG.error("[clearNodesWithSuffix] Failed to delete node: {}", path);
             }
         });
-        LOG.info("[clearNodesWithSuffifx] All nodes whose suffix matches ({}) are cleared", suffixPath);
+        LOG.info("[clearNodesWithSuffix] All nodes whose suffix matches ({}) are cleared", suffixPath);
     }
 
     /**
