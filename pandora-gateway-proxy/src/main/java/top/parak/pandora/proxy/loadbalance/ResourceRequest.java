@@ -21,7 +21,7 @@ public class ResourceRequest {
     }
 
     public String getSelectKey() {
-        return resourceName + requestSource + System.currentTimeMillis();
+        return resourceName + requestSource + System.nanoTime();
     }
 
     public String getResourceName() {
