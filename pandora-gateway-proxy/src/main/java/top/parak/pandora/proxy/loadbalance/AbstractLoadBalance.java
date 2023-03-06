@@ -1,5 +1,7 @@
 package top.parak.pandora.proxy.loadbalance;
 
+import top.parak.pandora.request.BaseRequest;
+
 import java.util.List;
 
 /**
@@ -11,7 +13,7 @@ import java.util.List;
 public abstract class AbstractLoadBalance<T> implements LoadBalance<T> {
 
     @Override
-    public T select(List<T> resourceList, ResourceRequest request) {
+    public T select(List<T> resourceList, BaseRequest request) {
         if (resourceList == null || resourceList.isEmpty()) {
             return null;
         }
@@ -28,6 +30,6 @@ public abstract class AbstractLoadBalance<T> implements LoadBalance<T> {
      * @param request   the resource request
      * @return the resource selected by load balance algorithm
      */
-    protected abstract T doSelect(List<T> resources, ResourceRequest request);
+    protected abstract T doSelect(List<T> resources, BaseRequest request);
 
 }

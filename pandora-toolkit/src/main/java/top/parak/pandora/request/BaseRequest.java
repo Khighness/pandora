@@ -1,21 +1,23 @@
-package top.parak.pandora.proxy.loadbalance;
+package top.parak.pandora.request;
+
+import java.io.Serializable;
 
 /**
- * The request to get resource by load balance.
+ * A basic request.
  *
  * @author cantai
  * @since 2023-03-06
  */
-public class ResourceRequest {
+public class BaseRequest implements Serializable {
 
     private String resourceName;
 
     private String requestSource;
 
-    public ResourceRequest() {
+    public BaseRequest() {
     }
 
-    public ResourceRequest(String resourceName, String requestSource) {
+    public BaseRequest(String resourceName, String requestSource) {
         this.resourceName = resourceName;
         this.requestSource = requestSource;
     }

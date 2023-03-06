@@ -1,5 +1,7 @@
 package top.parak.pandora.proxy.loadbalance;
 
+import top.parak.pandora.request.BaseRequest;
+
 import java.util.List;
 
 /**
@@ -17,6 +19,6 @@ public interface LoadBalance<T> {
      * @param request   the resource request
      * @return the resource selected by load balance algorithm
      */
-    T select(List<T> resources, ResourceRequest request);
+    T select(List<T> resources, BaseRequest request);
 
 }

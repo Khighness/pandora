@@ -7,7 +7,7 @@ import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.stream.ChunkedWriteHandler;
 import io.netty.handler.timeout.IdleStateHandler;
-import top.parak.pandora.common.HttpConstants;
+import top.parak.pandora.constant.HttpConstants;
 import top.parak.pandora.server.logic.SessionManageService;
 
 import java.util.concurrent.TimeUnit;

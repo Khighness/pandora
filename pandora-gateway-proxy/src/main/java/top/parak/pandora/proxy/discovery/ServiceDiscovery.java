@@ -1,5 +1,7 @@
 package top.parak.pandora.proxy.discovery;
 
+import top.parak.pandora.request.BaseRequest;
+
 import java.net.InetSocketAddress;
 
 /**
@@ -13,9 +15,9 @@ public interface ServiceDiscovery {
     /**
      * Archive the address of service instance by service name.
      *
-     * @param serviceName the name of service
+     * @param request the service discovery request
      * @return the unique address of service instance
      */
-    InetSocketAddress archiveInstance(String serviceName);
+    InetSocketAddress archiveInstance(BaseRequest request);
 
 }

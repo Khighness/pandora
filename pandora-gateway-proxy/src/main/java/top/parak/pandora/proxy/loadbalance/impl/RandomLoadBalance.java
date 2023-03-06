@@ -1,7 +1,7 @@
 package top.parak.pandora.proxy.loadbalance.impl;
 
 import top.parak.pandora.proxy.loadbalance.AbstractLoadBalance;
-import top.parak.pandora.proxy.loadbalance.ResourceRequest;
+import top.parak.pandora.request.BaseRequest;
 
 import java.util.List;
 import java.util.Random;
@@ -15,7 +15,7 @@ import java.util.Random;
 public class RandomLoadBalance<T> extends AbstractLoadBalance<T> {
 
     @Override
-    protected T doSelect(List<T> resources, ResourceRequest ignored) {
+    protected T doSelect(List<T> resources, BaseRequest ignored) {
         Random random = new Random();
         return resources.get(random.nextInt(resources.size()));
     }

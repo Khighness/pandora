@@ -20,7 +20,7 @@ import io.netty.handler.codec.http.websocketx.WebSocketVersion;
 
 import top.parak.pandora.client.exception.WebSocketClientException;
 import top.parak.pandora.client.handler.WebSocketClientHandler;
-import top.parak.pandora.common.HttpConstants;
+import top.parak.pandora.constant.HttpConstants;
 import top.parak.pandora.statemachine.ReOpenableStatemachine;
 
 import java.net.URI;

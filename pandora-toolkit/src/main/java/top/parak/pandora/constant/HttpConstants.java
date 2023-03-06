@@ -1,4 +1,4 @@
-package top.parak.pandora.common;
+package top.parak.pandora.constant;
 
 /**
  * @author Khighness

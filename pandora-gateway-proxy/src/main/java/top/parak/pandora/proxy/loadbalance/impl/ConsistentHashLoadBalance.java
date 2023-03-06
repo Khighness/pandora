@@ -1,7 +1,7 @@
 package top.parak.pandora.proxy.loadbalance.impl;
 
 import top.parak.pandora.proxy.loadbalance.AbstractLoadBalance;
-import top.parak.pandora.proxy.loadbalance.ResourceRequest;
+import top.parak.pandora.request.BaseRequest;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -22,7 +22,7 @@ public class ConsistentHashLoadBalance<T> extends AbstractLoadBalance<T> {
     private final Map<String, ConsistentHashSelector<T>> selectors = new ConcurrentHashMap<>();
 
     @Override
-    protected T doSelect(List<T> resources, ResourceRequest request) {
+    protected T doSelect(List<T> resources, BaseRequest request) {
         int identityHashCode = System.identityHashCode(resources);
         String resourceName = request.getResourceName();
         ConsistentHashSelector<T> selector = selectors.get(resourceName);
