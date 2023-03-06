@@ -13,10 +13,10 @@ public interface LoadBalance<T> {
     /**
      * Select one of the resources.
      *
-     * @param resourceList the resource list
-     * @param resourceName the resource name
+     * @param resources the resource list
+     * @param request   the resource request
      * @return the resource selected by load balance algorithm
      */
-    T select(List<T> resourceList, String resourceName);
+    T select(List<T> resources, ResourceRequest request);
 
 }

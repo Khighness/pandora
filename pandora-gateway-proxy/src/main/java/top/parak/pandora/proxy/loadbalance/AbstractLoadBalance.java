@@ -11,23 +11,23 @@ import java.util.List;
 public abstract class AbstractLoadBalance<T> implements LoadBalance<T> {
 
     @Override
-    public T select(List<T> resourceList, String resourceName) {
+    public T select(List<T> resourceList, ResourceRequest request) {
         if (resourceList == null || resourceList.isEmpty()) {
             return null;
         }
         if (resourceList.size() == 1) {
             return resourceList.get(0);
         }
-        return doSelect(resourceList, resourceName);
+        return doSelect(resourceList, request);
     }
 
     /**
      * Do select by a specific algorithm.
      *
-     * @param resourceList the resource list
-     * @param resourceName the resource name
+     * @param resources the resource list
+     * @param request   the resource request
      * @return the resource selected by load balance algorithm
      */
-    protected abstract T doSelect(List<T> resourceList, String resourceName);
+    protected abstract T doSelect(List<T> resources, ResourceRequest request);
 
 }
