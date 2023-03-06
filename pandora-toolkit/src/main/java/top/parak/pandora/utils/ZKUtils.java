@@ -29,7 +29,7 @@ public class ZKUtils {
 
     private static final int BASE_SLEEP_TIME = 1000;
     private static final int MAX_RETRIES = 3;
-    private static final String ZK_REGISTER_ROOT_PATH = "/svr-dvr";
+    private static final String ZK_REGISTER_ROOT_PATH = "/pandora";
 
     /**
      * Cache the registered path.
