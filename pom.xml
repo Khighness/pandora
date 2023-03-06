@@ -30,6 +30,7 @@
         <lombok.version>1.18.16</lombok.version>
         <logback.version>1.2.3</logback.version>
         <netty.version>4.1.85.Final</netty.version>
+        <okhttp.version>4.10.0</okhttp.version>
         <curator.version>4.2.0</curator.version>
         <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
     </properties>
@@ -58,9 +59,9 @@
                 <version>${netty.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>${okhttp.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.curator</groupId>
@@ -71,6 +72,11 @@
                 <groupId>org.apache.curator</groupId>
                 <artifactId>curator-recipes</artifactId>
                 <version>${curator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
