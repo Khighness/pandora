@@ -32,6 +32,7 @@
         <netty.version>4.1.85.Final</netty.version>
         <okhttp.version>4.10.0</okhttp.version>
         <curator.version>4.2.0</curator.version>
+        <nacos.version>2.2.0</nacos.version>
         <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
     </properties>
 
@@ -72,6 +73,11 @@
                 <groupId>org.apache.curator</groupId>
                 <artifactId>curator-recipes</artifactId>
                 <version>${curator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.nacos</groupId>
+                <artifactId>nacos-client</artifactId>
+                <version>${nacos.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
