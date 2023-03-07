@@ -20,15 +20,15 @@ public class ReOpenableStatemachine extends AbstractStateMachine {
     private static final List<Integer> ALLOWED_OPENED_STATES = Arrays.asList(STATE_INITIAL, STATE_OPENED, STATE_CLOSED);
     private static final List<Integer> ALLOWED_CLOSED_STATES = Collections.singletonList(STATE_OPENED);
 
-    protected void transferToOpened() {
+    public void transferToOpened() {
         transfer(ALLOWED_OPENED_STATES, STATE_OPENED);
     }
 
-    protected void transferToClosed() {
+    public void transferToClosed() {
         transfer(ALLOWED_CLOSED_STATES, STATE_CLOSED);
     }
 
-    protected boolean isOpened() {
+    public boolean isOpened() {
         return state() == STATE_OPENED;
     }
 

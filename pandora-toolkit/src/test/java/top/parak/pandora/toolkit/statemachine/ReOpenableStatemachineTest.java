@@ -1,9 +1,11 @@
-package top.parak.pandora.statemachine;
+package top.parak.pandora.toolkit.statemachine;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import top.parak.pandora.exception.StatemachineException;
+import top.parak.pandora.statemachine.AbstractStateMachine;
+import top.parak.pandora.statemachine.ReOpenableStatemachine;
 
 public class ReOpenableStatemachineTest {
 
