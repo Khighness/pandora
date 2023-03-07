@@ -3,7 +3,7 @@ package top.parak.pandora.proxy.exception;
 /**
  * Thrown when the service is cannot be found.
  *
- * @author cantai
+ * @author Khighness
  * @since 2023-03-06
  */
 public class ServiceDiscoveryException extends RuntimeException {

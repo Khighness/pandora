@@ -3,7 +3,7 @@ package top.parak.pandora.proxy.config;
 /**
  * Proxy config.
  *
- * @author cantai
+ * @author Khighness
  * @since 2023-02-26
  */
 public class ProxyConfig {

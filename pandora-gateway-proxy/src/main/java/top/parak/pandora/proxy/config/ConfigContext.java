@@ -7,7 +7,7 @@ import java.util.Properties;
 /**
  * Config context.
  *
- * @author cantai
+ * @author Khighness
  * @since 2023-02-26
  */
 public class ConfigContext {

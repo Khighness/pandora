@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * A basic request.
  *
- * @author cantai
+ * @author Khighness
  * @since 2023-03-06
  */
 public class BaseRequest implements Serializable {

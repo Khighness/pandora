@@ -6,7 +6,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * SPI extension context.
  *
- * @author cantai
+ * @author Khighness
  * @since 2023-03-06
  */
 public class ExtensionContext {

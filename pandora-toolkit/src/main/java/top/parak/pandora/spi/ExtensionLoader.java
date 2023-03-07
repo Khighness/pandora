@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * SPI extension loader.
  *
- * @author cantai
+ * @author Khighness
  * @since 2023-03-06
  */
 public final class ExtensionLoader<T> {
@@ -80,7 +80,8 @@ public final class ExtensionLoader<T> {
         T instance = (T) ExtensionContext.EXTENSION_INSTANCES.get(clazz);
         if (instance == null) {
             try {
-                ExtensionContext.EXTENSION_INSTANCES.put(clazz, clazz.newInstance());
+                instance = (T) clazz.newInstance();
+                ExtensionContext.EXTENSION_INSTANCES.put(clazz, instance);
             } catch (Exception e) {
                 LOG.error("[createExtension] failed to create instance", e);
             }
@@ -103,7 +104,7 @@ public final class ExtensionLoader<T> {
                 classes = cachedClasses.get();
                 if (classes == null) {
                     classes = new HashMap<>();
-
+                    loadDirectory(classes);
                     cachedClasses.set(classes);
                 }
             }
@@ -163,7 +164,7 @@ public final class ExtensionLoader<T> {
                         if (!extensionName.isEmpty() && !clazzName.isEmpty()) {
                             Class<?> clazz = classLoader.loadClass(clazzName);
                             extensionClasses.put(extensionName, clazz);
-                            LOG.info("[loadResource] SPI load, name: {}, class: {}", extensionName, clazzName );
+                            LOG.info("[loadResource] SPI load, name: {}, class: {}", extensionName, clazzName);
                         }
 
                     } catch (ClassNotFoundException e) {
