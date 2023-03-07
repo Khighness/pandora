@@ -1,6 +1,7 @@
 package top.parak.pandora.proxy.loadbalance;
 
 import top.parak.pandora.toolkit.request.BaseRequest;
+import top.parak.pandora.toolkit.spi.SPI;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
  * @author Khighness
  * @since 2023-03-04
  */
+@SPI
 public interface LoadBalance<T> {
 
     /**

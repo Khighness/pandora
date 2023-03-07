@@ -8,6 +8,7 @@ import top.parak.pandora.proxy.discovery.ServiceDiscovery;
 import top.parak.pandora.proxy.exception.ServiceDiscoveryException;
 import top.parak.pandora.proxy.loadbalance.LoadBalance;
 import top.parak.pandora.toolkit.request.BaseRequest;
+import top.parak.pandora.toolkit.spi.ExtensionContext;
 import top.parak.pandora.toolkit.utils.ZKUtils;
 
 import java.net.InetSocketAddress;
@@ -25,8 +26,9 @@ public class ZkServiceDiscovery implements ServiceDiscovery {
 
     private final LoadBalance<String> loadBalance;
 
-    public ZkServiceDiscovery(LoadBalance<String> loadBalance) {
-        this.loadBalance = loadBalance;
+    public ZkServiceDiscovery() {
+        loadBalance = ExtensionContext.getExtensionLoader(LoadBalance.class)
+                .getExtension("consistent-hash");
     }
 
     @Override
