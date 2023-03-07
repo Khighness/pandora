@@ -1,7 +1,7 @@
 package top.parak.pandora.proxy.loadbalance.impl;
 
 import top.parak.pandora.proxy.loadbalance.AbstractLoadBalance;
-import top.parak.pandora.request.BaseRequest;
+import top.parak.pandora.toolkit.request.BaseRequest;
 
 import java.util.List;
 import java.util.Random;

@@ -1,6 +1,6 @@
 package top.parak.pandora.proxy.config;
 
-import top.parak.pandora.utils.PropertiesFileUtils;
+import top.parak.pandora.toolkit.utils.PropertiesFileUtils;
 
 import java.util.Properties;
 

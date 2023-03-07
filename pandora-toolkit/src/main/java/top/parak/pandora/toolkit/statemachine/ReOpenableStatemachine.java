@@ -1,6 +1,4 @@
-package top.parak.pandora.statemachine;
-
-import top.parak.pandora.exception.StatemachineException;
+package top.parak.pandora.toolkit.statemachine;
 
 import java.util.Arrays;
 import java.util.Collections;

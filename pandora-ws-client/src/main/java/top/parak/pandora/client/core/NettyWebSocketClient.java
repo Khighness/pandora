@@ -20,8 +20,8 @@ import io.netty.handler.codec.http.websocketx.WebSocketVersion;
 
 import top.parak.pandora.client.exception.WebSocketClientException;
 import top.parak.pandora.client.handler.WebSocketClientHandler;
-import top.parak.pandora.constant.HttpConstants;
-import top.parak.pandora.statemachine.ReOpenableStatemachine;
+import top.parak.pandora.toolkit.constant.HttpConstants;
+import top.parak.pandora.toolkit.statemachine.ReOpenableStatemachine;
 
 import java.net.URI;
 import java.util.concurrent.locks.ReentrantLock;

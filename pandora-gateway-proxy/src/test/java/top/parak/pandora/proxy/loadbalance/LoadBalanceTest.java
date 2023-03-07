@@ -3,7 +3,7 @@ package top.parak.pandora.proxy.loadbalance;
 import org.junit.Test;
 import top.parak.pandora.proxy.loadbalance.impl.ConsistentHashLoadBalance;
 import top.parak.pandora.proxy.loadbalance.impl.RandomLoadBalance;
-import top.parak.pandora.request.BaseRequest;
+import top.parak.pandora.toolkit.request.BaseRequest;
 
 import java.util.Arrays;
 import java.util.List;

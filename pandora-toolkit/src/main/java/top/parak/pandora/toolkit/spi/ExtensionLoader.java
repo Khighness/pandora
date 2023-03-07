@@ -1,8 +1,8 @@
-package top.parak.pandora.spi;
+package top.parak.pandora.toolkit.spi;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import top.parak.pandora.exception.ExtensionLoadException;
+import top.parak.pandora.toolkit.exception.ExtensionLoadException;
 
 import java.io.BufferedReader;
 import java.io.IOException;

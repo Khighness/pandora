@@ -1,4 +1,4 @@
-package top.parak.pandora.utils;
+package top.parak.pandora.toolkit.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,8 +1,6 @@
 package top.parak.pandora.toolkit.spi;
 
 import org.junit.Test;
-import top.parak.pandora.spi.ExtensionContext;
-import top.parak.pandora.spi.ExtensionLoader;
 import top.parak.pandora.toolkit.spi.example.Animal;
 
 public class ExtensionContextTest {

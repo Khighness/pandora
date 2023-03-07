@@ -1,4 +1,4 @@
-package top.parak.pandora.spi;
+package top.parak.pandora.toolkit.spi;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

@@ -1,6 +1,6 @@
 package top.parak.pandora.proxy.loadbalance;
 
-import top.parak.pandora.request.BaseRequest;
+import top.parak.pandora.toolkit.request.BaseRequest;
 
 import java.util.List;
 

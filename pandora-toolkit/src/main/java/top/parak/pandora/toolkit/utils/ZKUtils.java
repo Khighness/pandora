@@ -1,4 +1,4 @@
-package top.parak.pandora.utils;
+package top.parak.pandora.toolkit.utils;
 
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;

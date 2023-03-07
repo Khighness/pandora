@@ -1,7 +1,6 @@
-package top.parak.pandora.exception;
+package top.parak.pandora.toolkit.exception;
 
-import top.parak.pandora.spi.ExtensionContext;
-import top.parak.pandora.spi.ExtensionLoader;
+import top.parak.pandora.toolkit.spi.ExtensionLoader;
 
 /**
  * Thrown when {@link ExtensionLoader} occurs exception.

@@ -1,4 +1,4 @@
-package top.parak.pandora.spi;
+package top.parak.pandora.toolkit.spi;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

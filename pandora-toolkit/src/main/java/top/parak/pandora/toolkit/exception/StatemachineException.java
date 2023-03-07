@@ -1,6 +1,6 @@
-package top.parak.pandora.exception;
+package top.parak.pandora.toolkit.exception;
 
-import top.parak.pandora.statemachine.StateMachine;
+import top.parak.pandora.toolkit.statemachine.StateMachine;
 
 /**
  * Thrown when {@link StateMachine} transfer from a invalid state to the target state.

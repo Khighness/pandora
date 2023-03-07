@@ -1,6 +1,6 @@
 package top.parak.pandora.toolkit.spi.example;
 
-import top.parak.pandora.spi.SPI;
+import top.parak.pandora.toolkit.spi.SPI;
 
 /**
  * SPI example interface.
