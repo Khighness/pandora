@@ -14,9 +14,9 @@ import org.apache.zookeeper.server.ZooKeeperServerMain;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ZKUtilsTest {
+public class ZkUtilsTest {
 
-    private static final Logger LOG = LoggerFactory.getLogger(ZKUtilsTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ZkUtilsTest.class);
 
     private static final String ZK_ADDR = "127.0.0.1:20000";
 
@@ -29,7 +29,7 @@ public class ZKUtilsTest {
     private CuratorFramework zkClient;
 
     @Before
-    public void before() throws Exception {
+    public void setupZookeeper() throws Exception {
         executorService.submit(() -> {
             try {
                 ServerConfig serverConfig = new ServerConfig();
@@ -41,7 +41,7 @@ public class ZKUtilsTest {
             }
         });
         Thread.sleep(1000);
-        zkClient = ZKUtils.getZkClient(ZK_ADDR);
+        zkClient = ZkUtils.getZkClient(ZK_ADDR);
     }
 
     @Test
@@ -52,8 +52,8 @@ public class ZKUtilsTest {
 
     @Test
     public void createPersistentNode() {
-        CuratorFramework zkClient = ZKUtils.getZkClient(ZK_ADDR);
-        ZKUtils.createPersistentNode(zkClient, "Khighness");
+        CuratorFramework zkClient = ZkUtils.getZkClient(ZK_ADDR);
+        ZkUtils.createPersistentNode(zkClient, "Khighness");
         LOG.info("[createPersistentNode] OK");
     }
 
@@ -62,8 +62,8 @@ public class ZKUtilsTest {
         final String parentPath = "getChildrenNodes";
         final int total = 10;
         for (int i = 1; i <= total; i++) {
-            ZKUtils.createPersistentNode(zkClient, parentPath + "/K*" + i);
-            List<String> childrenNodes = ZKUtils.getChildrenNodes(zkClient, parentPath);
+            ZkUtils.createPersistentNode(zkClient, parentPath + "/K*" + i);
+            List<String> childrenNodes = ZkUtils.getChildrenNodes(zkClient, parentPath);
             Assert.assertEquals(i, childrenNodes.size());
             LOG.info("[getChildrenNodes] childrenNodes: {}", childrenNodes);
         }
@@ -72,16 +72,16 @@ public class ZKUtilsTest {
 
     @Test
     public void clearNodesWithSuffix() {
-        final String parentPath = "clearNodesWithSuffifx";
+        final String parentPath = "clearNodesWithSuffix";
         final int total = 10;
         for (int i = 1; i <= total; i++) {
-            ZKUtils.createPersistentNode(zkClient, parentPath + "/K*" + i);
-            List<String> childrenNodes = ZKUtils.getChildrenNodes(zkClient, parentPath);
+            ZkUtils.createPersistentNode(zkClient, parentPath + "/K*" + i);
+            List<String> childrenNodes = ZkUtils.getChildrenNodes(zkClient, parentPath);
             Assert.assertEquals(i, childrenNodes.size());
         }
         for (int i = 1; i <= total; i++) {
-            ZKUtils.clearNodesWithSuffix(zkClient,   "K*" + i);
-            List<String> childrenNodes = ZKUtils.getChildrenNodes(zkClient, parentPath);
+            ZkUtils.clearNodesWithSuffix(zkClient,   "K*" + i);
+            List<String> childrenNodes = ZkUtils.getChildrenNodes(zkClient, parentPath);
             Assert.assertEquals(total - i, childrenNodes.size());
         }
         LOG.info("[clearNodesWithSuffix] OK");

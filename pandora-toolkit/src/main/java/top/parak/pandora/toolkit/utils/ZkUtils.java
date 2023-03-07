@@ -11,7 +11,6 @@ import org.apache.zookeeper.CreateMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -24,8 +23,9 @@ import java.util.concurrent.TimeUnit;
  * @author Khighness
  * @since 2023-02-25
  */
-public class ZKUtils {
-    private static final Logger LOG = LoggerFactory.getLogger(ZKUtils.class);
+public class ZkUtils {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ZkUtils.class);
 
     private static final int BASE_SLEEP_TIME = 1000;
     private static final int MAX_RETRIES = 3;
@@ -34,17 +34,17 @@ public class ZKUtils {
     /**
      * Cache the registered path.
      */
-    private static final Set<String> REGISTERED_PATH_SET = new HashSet<>();
+    private static final Set<String> REGISTERED_PATH_SET = ConcurrentHashMap.newKeySet();
     /**
-     * Cache the node path and the children of node.
+     * Cache the node path and the children of the node.
      */
     private static final Map<String, List<String>> PATH_CHILDREN_MAP = new ConcurrentHashMap<>();
     /**
      * Zookeeper client instance.
      */
-    private static CuratorFramework zkClient;
+    private static volatile CuratorFramework zkClient;
 
-    private ZKUtils() {
+    private ZkUtils() {
     }
 
     /**
@@ -58,23 +58,26 @@ public class ZKUtils {
             return zkClient;
         }
 
-        synchronized (ZKUtils.class) {
-            ExponentialBackoffRetry retryPolicy = new ExponentialBackoffRetry(BASE_SLEEP_TIME, MAX_RETRIES);
-            zkClient = CuratorFrameworkFactory.builder()
-                    .connectString(zkAddress)
-                    .retryPolicy(retryPolicy)
-                    .build();
-            zkClient.start();
-            LOG.info("Zookeeper client is initialized successfully");
+        synchronized (ZkUtils.class) {
+            if (zkClient == null || zkClient.getState() != CuratorFrameworkState.STARTED) {
+                ExponentialBackoffRetry retryPolicy = new ExponentialBackoffRetry(BASE_SLEEP_TIME, MAX_RETRIES);
+                zkClient = CuratorFrameworkFactory.builder()
+                        .connectString(zkAddress)
+                        .retryPolicy(retryPolicy)
+                        .build();
+                zkClient.start();
+                LOG.info("Zookeeper client is initialized successfully");
 
-            try {
-                if (!zkClient.blockUntilConnected(30, TimeUnit.SECONDS)) {
-                    throw new RuntimeException("Timeout waiting to connect to zookeeper");
+                try {
+                    if (!zkClient.blockUntilConnected(30, TimeUnit.SECONDS)) {
+                        throw new RuntimeException("Timeout waiting to connect to zookeeper");
+                    }
+                } catch (InterruptedException e) {
+                    LOG.error("[getZkClient] sleep interrupted");
                 }
-            } catch (InterruptedException e) {
-                LOG.error("[getZkClient] sleep interrupted");
             }
         }
+
         return zkClient;
     }
 
@@ -107,19 +110,18 @@ public class ZKUtils {
      * @return the children of node
      */
     public static List<String> getChildrenNodes(CuratorFramework zkClient, String path) {
-        List<String> addresses = PATH_CHILDREN_MAP.get(path);
-        if (addresses != null && addresses.size() > 0) {
+        List<String> result = PATH_CHILDREN_MAP.get(path);
+        if (result != null && result.size() > 0) {
             return PATH_CHILDREN_MAP.get(path);
         }
 
-        List<String> result = null;
         path = ZK_REGISTER_ROOT_PATH + "/" + path;
         try {
             result = zkClient.getChildren().forPath(path);
             PATH_CHILDREN_MAP.put(path, result);
-            registerWatcher(zkClient, path);
+            addListener(zkClient, path);
         } catch (Exception e) {
-            LOG.error("[getChildrenNodes] Failed to get node: {}", path);
+            LOG.error("[getChildrenNodes] Failed to get node: {}", path, e);
         }
 
         return result;
@@ -138,23 +140,23 @@ public class ZKUtils {
                     zkClient.delete().forPath(path);
                 }
             } catch (Exception e) {
-                LOG.error("[clearNodesWithSuffix] Failed to delete node: {}", path);
+                LOG.error("[clearNodesWithSuffix] Failed to delete node: {}", path, e);
             }
         });
         LOG.info("[clearNodesWithSuffix] All nodes whose suffix matches ({}) are cleared", suffixPath);
     }
 
     /**
-     * Register watcher for the given path.
+     * Add listener for the given path.
      *
      * @param zkClient Zookeeper client
      * @param path     the path of node
-     * @throws Exception if chach fails to start
+     * @throws Exception if listener fails to start
      */
-    public static void registerWatcher(CuratorFramework zkClient, String path) throws Exception {
+    public static void addListener(CuratorFramework zkClient, String path) throws Exception {
         PathChildrenCache pathChildrenCache = new PathChildrenCache(zkClient, path, true);
         PathChildrenCacheListener listener = (zkCli, cacheEvent) -> {
-            LOG.info("[registerWatcher] path: {}, event: {}", path, cacheEvent);
+            LOG.info("[addListener] path: {}, event: {}", path, cacheEvent);
             List<String> children = zkCli.getChildren().forPath(path);
             PATH_CHILDREN_MAP.put(path, children);
         };

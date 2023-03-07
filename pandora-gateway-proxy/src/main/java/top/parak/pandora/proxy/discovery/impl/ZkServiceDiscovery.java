@@ -9,7 +9,7 @@ import top.parak.pandora.proxy.exception.ServiceDiscoveryException;
 import top.parak.pandora.proxy.loadbalance.LoadBalance;
 import top.parak.pandora.toolkit.request.BaseRequest;
 import top.parak.pandora.toolkit.spi.ExtensionContext;
-import top.parak.pandora.toolkit.utils.ZKUtils;
+import top.parak.pandora.toolkit.utils.ZkUtils;
 
 import java.net.InetSocketAddress;
 import java.util.List;
@@ -33,9 +33,9 @@ public class ZkServiceDiscovery implements ServiceDiscovery {
 
     @Override
     public InetSocketAddress archiveInstance(BaseRequest request) {
-        CuratorFramework zkClient = ZKUtils.getZkClient(ConfigContext.CONFIG.getZookeeperAddress());
+        CuratorFramework zkClient = ZkUtils.getZkClient(ConfigContext.CONFIG.getZookeeperAddress());
         String serviceName = request.getResourceName();
-        List<String> serviceInstances = ZKUtils.getChildrenNodes(zkClient, serviceName);
+        List<String> serviceInstances = ZkUtils.getChildrenNodes(zkClient, serviceName);
 
         if (serviceInstances == null || serviceInstances.isEmpty()) {
             throw new ServiceDiscoveryException(serviceName);

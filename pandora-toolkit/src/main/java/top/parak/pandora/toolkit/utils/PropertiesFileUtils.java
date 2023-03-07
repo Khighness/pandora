@@ -11,7 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
 /**
- *
+ * Properties file utils.
  *
  * @author Khighness
  * @since 2022-09-11
@@ -22,6 +22,12 @@ public final class PropertiesFileUtils {
     private PropertiesFileUtils() {
     }
 
+    /**
+     * Read properties file in classpath.
+     *
+     * @param fileName the name of file
+     * @return a {@link Properties} instance
+     */
     public static Properties readPropertiesFile(String fileName) {
         URL url = Thread.currentThread().getContextClassLoader().getResource("");
         String configPath = "";
